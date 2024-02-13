@@ -6,10 +6,6 @@ cls
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: START OF SCRIPT :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: This script creates a batch and vbs file that launches rocket league with bakkesmod
-:: Comments are used below each line or group of lines to explain what the code above is does
-:: The script is divided into 3 main parts: ROCKETLEAGUE FOLDER FUNCTIONS, BAKKESMOD FOLDER FUNCTIONS, and the main script (START OF SCRIPT - END OF SCRIPT)
-:: Functions are called via goto <function name> (e.g. goto Steam)
 
 :Start
 set Error=B
@@ -26,7 +22,7 @@ if /i %user_input%==B (goto Epic) else (goto Invalid)
 :: if user input is not A or B, then user is sent to :Invalid then back to :Start
 
 :batchwrite
-:: Copy map files into CookedPCConsole\
+:: copy map files into CookedPCConsole\
 
 copy maps\movinggoals_diamond.upk "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond.upk"
 copy maps\movinggoals_diamond_b.upk "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond_b.upk"
@@ -37,7 +33,7 @@ copy maps\movinggoals_triangle.upk "%RLfolder%\TAGame\CookedPCConsole\movinggoal
 copy maps\movinggoals_triangle_b.upk "%RLfolder%\TAGame\CookedPCConsole\movinggoals_triangle_b.upk"
 
 
-:: Create Uninstaller
+:: create Uninstaller
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond.upk" > uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond_b.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_solid_walls.upk" >> uninstall_%platform%.bat
@@ -47,7 +43,7 @@ echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_triangle.upk" >> uninsta
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_triangle_b.upk" >> uninstall_%platform%.bat
 echo exit >> uninstall_%platform%.bat
 
-:: Installation complete screen
+:: installation complete screen
 echo Install complete.
 pause
 goto Quit
@@ -55,9 +51,6 @@ goto Quit
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: END OF SCRIPT ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Everything below are functions and not part of the main script
-:: Triple lines with capitalized words are used to classify different groups of functions
-:: New functions are initialized via :<function name> and called via goto <function name> (e.g. :Steam and goto Steam)
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -68,12 +61,12 @@ goto Quit
 :Steam
 set "platform=steam"
 if exist "C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win64\rocketleague.exe" ( set "RLfolder=C:\Program Files (x86)\Steam\steamapps\common\rocketleague" && goto batchwrite ) else ( goto Custom )
-:: if the default steam rocketleague directory is found, %RLfolder% is created and user is sent to :bakkescheck, otherwise, the user is routed to :Custom
+:: if the default steam rocketleague directory is found, %RLfolder% is created and user is sent to :batchwrite, otherwise, the user is routed to :Custom
 
 :Epic
 set "platform=epic"
 if exist "C:\Program Files\Epic Games\rocketleague\Binaries\Win64\rocketleague.exe" ( set "RLfolder=C:\Program Files\Epic Games\rocketleague" && goto batchwrite ) else ( goto Custom )
-:: if the default epic rocketleague directory is found, %RLfolder% is created and user is sent to :bakkescheck, otherwise, the user is routed to :Custom
+:: if the default epic rocketleague directory is found, %RLfolder% is created and user is sent to :batchwrite, otherwise, the user is routed to :Custom
 
 :Custom
 :: %RLfolder% hasn't been made yet because the rocketleague directory hasn't been found
