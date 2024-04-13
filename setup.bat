@@ -34,14 +34,17 @@ copy maps\movinggoals_triangle_b.upk "%RLfolder%\TAGame\CookedPCConsole\movinggo
 
 
 :: create Uninstaller
-echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond.upk" > uninstall_%platform%.bat
+echo @echo off > uninstall_%platform%.bat
+echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_diamond_b.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_solid_walls.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_star.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_star_b.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_triangle.upk" >> uninstall_%platform%.bat
 echo del "%RLfolder%\TAGame\CookedPCConsole\movinggoals_triangle_b.upk" >> uninstall_%platform%.bat
-echo exit >> uninstall_%platform%.bat
+echo echo Uninstall Complete! >> uninstall_%platform%.bat
+echo pause >> uninstall_%platform%.bat
+echo del uninstall_%platform%.bat >> uninstall_%platform%.bat
 
 :: installation complete screen
 echo Install complete.
